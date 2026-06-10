@@ -5,9 +5,6 @@ import PackageDescription
 
 let package = Package(
     name: "WireGuardKit",
-    // Manifest 6.0 (richiesto da Xcode 26.4) ma sorgenti in Swift 5: WireGuardKit
-    // e' scritto per Swift 5 e non passa la strict concurrency della modalita' 6.
-    swiftLanguageModes: [.v5],
     platforms: [
         .macOS(.v12),
         .iOS(.v15)
@@ -39,5 +36,8 @@ let package = Package(
             publicHeadersPath: ".",
             linkerSettings: [.linkedLibrary("wg-go")]
         )
-    ]
+    ],
+    // Manifest 6.0 (richiesto da Xcode 26.4) ma sorgenti in Swift 5: WireGuardKit
+    // e' scritto per Swift 5 e non passa la strict concurrency della modalita' 6.
+    swiftLanguageVersions: [.v5]
 )
